@@ -1,0 +1,17 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Want to Trade{% endblock %}
+
+{% block head %}
+{{ super() }}
+{{ gmap.js }}
+{% endblock %}
+
+{% block content %}
+{{ gmap.html }}
+<div class="col-md-8">
+    {% for offer in offers %}
+        <h3>{{ offer["currency-from"] }} ({{ offer["range"][1] }}) > {{ offer["currency-to"] }}</h3>
+    {% endfor %}
+</div>
+{% endblock %}
