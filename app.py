@@ -36,8 +36,7 @@ def index():
                lat=49.22573,
                lng=16.58205,
                markers=markers,
-               cls="col-md-8")
-               #style="height:100%;width:100%;")
+               style="height:600px;width:100%;")
     return render_template("index.html", gmap=gmap, offers=offers)
 
 @app.route('/api/v1/offers', methods=['GET'])
