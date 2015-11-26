@@ -8,10 +8,25 @@
 {% endblock %}
 
 {% block content %}
-{{ gmap.html }}
 <div class="col-md-8">
+{{ gmap.html }}
+</div>
+<div class="col-md-4">
+  <table class="table table-hover">
+    <thead>
+      <th>From</th>
+      <th>To</th>
+      <th>Amount</th>
+    </thead>
+    <tbody>
     {% for offer in offers %}
-        <h3>{{ offer["currency-from"] }} ({{ offer["range"][1] }}) > {{ offer["currency-to"] }}</h3>
+      <tr>
+        <td>{{ offer["currency-from"] }}</td>
+        <td>{{ offer["currency-to"] }}</td>
+        <td>{{ offer["range"][1] }}</td>
+      </tr>
     {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}
