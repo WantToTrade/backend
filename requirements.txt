@@ -1,3 +1,5 @@
 flask
+flask-SQLAlchemy
 flask-bootstrap
 flask-googlemaps
+flask-script
