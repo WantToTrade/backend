@@ -10,14 +10,11 @@ class Config:
     def init_app(app):
         pass
 
-    @staticmethod
-    def init_db(app):
-        pass
-
 class DevelConfig(Config):
     DEBUG = True
-    SQLACHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
                                                          'wtt-devel.sqlite')
+    print(SQLALCHEMY_DATABASE_URI)
 
 class ProductionConfig(Config):
     SQLACHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,

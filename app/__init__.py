@@ -14,10 +14,8 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
-    db.init_app(app)
-    config[config_name].init_db(db)
-
     bootstrap.init_app(app)
+    db.init_app(app)
     googlemaps.init_app(app)
 
     from .main import main as main_blueprint

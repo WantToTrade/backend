@@ -21,9 +21,9 @@
     <tbody>
     {% for offer in offers %}
       <tr>
-        <td>{{ offer["currency-from"] }}</td>
-        <td>{{ offer["currency-to"] }}</td>
-        <td>{{ offer["range"][1] }}</td>
+        <td>{{ offer.currency_from }}</td>
+        <td>{{ offer.currency_to }}</td>
+        <td>{{ offer.amount }}</td>
       </tr>
     {% endfor %}
     </tbody>
