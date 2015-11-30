@@ -10,12 +10,15 @@ from .. import db
 
 @main.route('/')
 def index():
+    offers = Offer.query.all()
+    markers = [(o.latitude, o.longitude) for o in offers]
+
     gmap = Map(identifier="view-side",
                lat=49.22573,
                lng=16.58205,
+               markers=markers,
                style="height:600px;width:100%;")
-    offers = Offer.query.all()
-    return render_template("index.html", gmap=gmap, offers=offers)
+    return render_template("index.html", gmap=gmap, markers=markers, offers=offers)
 
 @main.route('/new', methods=['GET', 'POST'])
 def new_offer():
