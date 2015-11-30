@@ -1,0 +1,17 @@
+{% extends "bootstrap/base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Want to Trade - New Offer{% endblock %}
+
+{% block content %}
+<form class="col-md-5" method="POST" action="/new">
+    {{ form.hidden_tag() }}
+    {{ wtf.form_field(form.currency_from) }}
+    {{ wtf.form_field(form.currency_to) }}
+    {{ wtf.form_field(form.amount) }}
+    {{ wtf.form_field(form.latitude) }}
+    {{ wtf.form_field(form.longitude) }}
+    <input class="btn btn-default" type="submit" value="Submit">
+</form>
+{% endblock %}
