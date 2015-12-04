@@ -14,7 +14,6 @@ class DevelConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
                                                          'wtt-devel.sqlite')
-    print(SQLALCHEMY_DATABASE_URI)
 
 class ProductionConfig(Config):
     SQLACHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,
