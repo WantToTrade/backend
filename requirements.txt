@@ -5,3 +5,4 @@ flask-googlemaps
 flask-script
 flask-wtf
 wtforms
+flask-login
