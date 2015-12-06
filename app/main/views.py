@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from flask.ext.googlemaps import Map
+from flask.ext.login import login_required, current_user
 
 from flask import render_template, redirect
 from . import main
@@ -21,12 +22,17 @@ def index():
     return render_template("index.html", gmap=gmap, markers=markers, offers=offers)
 
 @main.route('/new', methods=['GET', 'POST'])
+@login_required
 def new_offer():
     form = OfferForm()
     if form.validate_on_submit():
-        offer = Offer(currency_from=form.currency_from.data, currency_to=form.currency_to.data,
-                      amount=form.amount.data, expires=datetime.now(), latitude=form.latitude.data,
-                      longitude=form.longitude.data)
+        offer = Offer(currency_from=form.currency_from.data,
+                      currency_to=form.currency_to.data,
+                      amount=form.amount.data,
+                      expires=datetime.now(),
+                      latitude=form.latitude.data,
+                      longitude=form.longitude.data,
+                      owner_id=current_user.id)
         db.session.add(offer)
         return redirect('/')
     return render_template('new_offer.html', form=form)

@@ -16,6 +16,7 @@ class Offer(db.Model):
     expires = db.Column(db.DateTime)
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -23,6 +24,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
+    offers = db.relationship('Offer', backref='owner')
 
     @property
     def password(self):

@@ -3,4 +3,4 @@ from wtforms.ext.sqlalchemy.orm import model_form
 
 from ..models import Offer
 
-OfferForm = model_form(Offer, base_class=Form)
+OfferForm = model_form(Offer, base_class=Form, exclude=['owner', 'owner_id'])
