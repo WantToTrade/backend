@@ -17,6 +17,7 @@
       <th>From</th>
       <th>To</th>
       <th>Amount</th>
+      <th>Expires in</th>
     </thead>
     <tbody>
     {% for offer in offers %}
@@ -24,6 +25,7 @@
         <td>{{ offer.currency_from }}</td>
         <td>{{ offer.currency_to }}</td>
         <td>{{ offer.amount }}</td>
+        <td>{{ moment(offer.expires).fromNow() }}</td>
       </tr>
     {% endfor %}
     </tbody>

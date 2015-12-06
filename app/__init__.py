@@ -3,12 +3,14 @@ from flask.ext.bootstrap import Bootstrap
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.googlemaps import GoogleMaps
 from flask.ext.login import LoginManager
+from flask.ext.moment import Moment
 
 from config import config
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 googlemaps = GoogleMaps()
+moment = Moment()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -23,6 +25,7 @@ def create_app(config_name):
     db.init_app(app)
     googlemaps.init_app(app)
     login_manager.init_app(app)
+    moment.init_app(app)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
