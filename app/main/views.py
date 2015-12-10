@@ -36,3 +36,10 @@ def new_offer():
         db.session.add(offer)
         return redirect('/')
     return render_template('new_offer.html', form=form)
+
+@main.route('/propose/<offer_id>', methods=['GET', 'POST'])
+@login_required
+def propose_offer(offer_id):
+    form = OfferForm()
+    my_offers = current_user.offers
+    return render_template('propose_offer.html', my_offers=my_offers, form=form)

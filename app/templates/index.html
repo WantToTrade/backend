@@ -18,6 +18,7 @@
       <th>To</th>
       <th>Amount</th>
       <th>Expires in</th>
+      <th></th>
     </thead>
     <tbody>
     {% for offer in offers %}
@@ -26,6 +27,9 @@
         <td>{{ offer.currency_to }}</td>
         <td>{{ offer.amount }}</td>
         <td>{{ moment(offer.expires).fromNow() }}</td>
+        <td>
+            <a href="{{ url_for('main.propose_offer', offer_id=offer.id) }}">accept offer</a>
+        </td>
       </tr>
     {% endfor %}
     </tbody>
